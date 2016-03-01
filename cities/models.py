@@ -91,7 +91,7 @@ class Subregion(Place):
 class City(Place):
     name_std = models.CharField(max_length=200, db_index=True, verbose_name="standard name")
     location = models.PointField()
-    population = models.IntegerField()
+    population = models.IntegerField(db_index=True)
     region = models.ForeignKey(Region, null=True, blank=True)
     subregion = models.ForeignKey(Subregion, null=True, blank=True)
     country = models.ForeignKey(Country)
