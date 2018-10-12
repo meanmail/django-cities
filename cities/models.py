@@ -6,6 +6,7 @@ try:
 except (NameError, ImportError):
     from django.utils.encoding import force_text
 
+from django import VERSION as DJANGO_VERSION
 from django.db import transaction
 from django.utils.encoding import python_2_unicode_compatible
 from django.contrib.gis.db.models import PointField
@@ -15,7 +16,7 @@ from django.contrib.gis.geos import Point
 from model_utils import Choices
 import swapper
 
-from .conf import (ALTERNATIVE_NAME_TYPES, SLUGIFY_FUNCTION, DJANGO_VERSION)
+from .conf import (ALTERNATIVE_NAME_TYPES, SLUGIFY_FUNCTION)
 from .managers import AlternativeNameManager
 from .util import unicode_func
 
@@ -25,7 +26,7 @@ __all__ = [
 ]
 
 
-if DJANGO_VERSION < 2:
+if DJANGO_VERSION < (1, 9):
     from django.contrib.gis.db.models import GeoManager
 else:
     from django.db.models import Manager as GeoManager
