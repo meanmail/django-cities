@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
                 ('slug', models.CharField(max_length=200)),
                 ('name_std', models.CharField(max_length=200, verbose_name='standard name', db_index=True)),
                 ('location', django.contrib.gis.db.models.fields.PointField(srid=4326)),
-                ('population', models.IntegerField()),
+                ('population', models.IntegerField(db_index=True)),
                 ('elevation', models.IntegerField(null=True)),
                 ('kind', models.CharField(max_length=10)),
                 ('timezone', models.CharField(max_length=40)),

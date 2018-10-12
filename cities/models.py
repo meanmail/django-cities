@@ -229,7 +229,7 @@ class BaseCity(Place, SlugModel):
                                   related_name='cities',
                                   on_delete=SET_NULL_OR_CASCADE)
     location = PointField()
-    population = models.IntegerField()
+    population = models.IntegerField(db_index=True)
     elevation = models.IntegerField(null=True)
     kind = models.CharField(max_length=10)  # http://www.geonames.org/export/codes.html
     timezone = models.CharField(max_length=40)
