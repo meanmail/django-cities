@@ -136,7 +136,6 @@ class Command(BaseCommand):
             help="Do not show the progress bar."
         )
 
-    @transaction.atomic
     def handle(self, *args, **options):
         self.download_cache = {}
         self.options = options
