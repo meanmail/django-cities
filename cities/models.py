@@ -8,7 +8,6 @@ except (NameError, ImportError):
 
 from django import VERSION as DJANGO_VERSION
 from django.db import transaction
-from django.utils.encoding import python_2_unicode_compatible
 from django.contrib.gis.db.models import PointField
 from django.db import models
 from django.contrib.gis.geos import Point
@@ -73,7 +72,6 @@ class SlugModel(models.Model):
             super(SlugModel, self).save(*args, **kwargs)
 
 
-@python_2_unicode_compatible
 class Place(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name="ascii name")
     alt_names = models.ManyToManyField('AlternativeName')
@@ -279,7 +277,6 @@ class District(Place, SlugModel):
         return None
 
 
-@python_2_unicode_compatible
 class AlternativeName(SlugModel):
     slug_contains_id = True
 
@@ -304,7 +301,6 @@ class AlternativeName(SlugModel):
         return None
 
 
-@python_2_unicode_compatible
 class PostalCode(Place, SlugModel):
     slug_contains_id = True
 
